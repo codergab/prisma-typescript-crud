@@ -1,0 +1,19 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  output        = "./generated/client"
+  binaryTargets = ["darwin"]
+}
+
+model User {
+  Id        Int      @id @default(autoincrement())
+  FirstName String
+  LastName  String
+  UserName  String
+  IsActive  Boolean  @default(true)
+  CreatedAt DateTime @default(now())
+}
